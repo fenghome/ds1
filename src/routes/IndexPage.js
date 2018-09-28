@@ -1,113 +1,49 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { connect } from 'dva';
+import { Router, Route, Switch } from 'dva/router';
+import dynamic from 'dva/dynamic';
+
+
 const { Header, Footer, Sider, Content } = Layout;
+
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
-const menus = [
-  { key: "aa", value: "aa" },
-  { key: "bb", value: "bb" },
-  { key: "cc", value: "cc", sub: [{ key: "dd", value: "dd", sub: [{ key: 'ww', value: "ww" }] }, { key: "ee", value: "ee" }] },
-  { key: 'kk', value: 'kk' }
-]
 
-const breadMap = [
-  { key: "cc", value: "cc" },
-  { key: "dd", value: 'dd' },
-  { key: "ww", value: "ww" }
-]
+function IndexPage({ dispatch, index, app }) {
 
-function IndexPage({ dispatch, example }) {
-
-  const { breadMap,defaultKey } = example;
-
-  const getMenu = (menus) => {
-    return menus.map(item => {
-      if (item.sub) {
-        return getSubMenu(item);
-      }
-      return <MenuItem key={item.key}>{item.value}</MenuItem>
-    })
-  }
-
-  const getSubMenu = (subMenus) => {
-    return (
-      <SubMenu key={subMenus.key} title={subMenus.value}>
-        {
-          subMenus.sub.map(item => {
-            if (item.sub) {
-              return getSubMenu(item);
-            }
-            return <MenuItem key={item.key}>{item.value}</MenuItem>
-          })
-        }
-      </SubMenu>
-    )
-  }
-
-  const onSelectMenu = ({ item, key, keyPath }) => {
-    let breadMap = [];
-    keyPath.reverse().forEach((key, index) => {
-      let menu = {};
-      if (index == 0) {
-        menu = menus.find(m => {
-          return m.key == key;
-        })
-      } else {
-        menu = breadMap[index - 1].sub.find(m => {
-          return m.key == key;
-        })
-      }
-      breadMap.push(menu);
-    });
-    dispatch({
-      type: 'example/setBreadMap',
-      payload: breadMap
-    })
-  }
-
-  const onClickBread = (e) => {
-
-    dispatch({
-      type:'example/setDefaultKey',
-      payload:[e]
-    })
-  }
+  const Home = getComponent(app, import('../models/home'), import('./Home'));
+  const List = getComponent(app, import('../models/list'), import('./List'));
+  const Product = getComponent(app, import('../models/product'), import('./Product'));
 
   return (
-    <Layout>
-      <Header style={{ background: "#FFFFFF" }}>
-      </Header>
+    <div>
       <Layout>
-        <Sider theme="light">
-          <Menu onClick={onSelectMenu} defaultOpenKeys={defaultKey}>
-            {
-              getMenu(menus)
-            }
-          </Menu>
-
-        </Sider>
+        <Header style={{ background: "#FFFFFF" }}>
+        </Header>
         <Content>
-          <Breadcrumb>
-            {
-              breadMap.map(item => (
-                <Breadcrumb.Item key={item.key}>
-                  <a onClick={() => onClickBread(item.key)}>
-                    {item.value}
-                  </a>
-                </Breadcrumb.Item>
-              ))
-            }
-          </Breadcrumb>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/list" exact component={List} />
+            <Route path="/product" exact component={Product} />
+          </Switch>
         </Content>
+        <Footer>Footer</Footer>
       </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
+    </div>
   );
 }
 
 IndexPage.propTypes = {
 };
 
-export default connect(({ example }) => ({ example }))(IndexPage);
+function getComponent(app, model, component) {
+  return dynamic({
+    app,
+    models: () => [model],
+    component: () => component,
+  })
+}
+
+export default connect(({ index }) => ({ index }))(IndexPage);

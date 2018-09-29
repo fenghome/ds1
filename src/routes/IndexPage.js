@@ -1,14 +1,15 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import { connect } from 'dva';
 import { Router, Route, Switch } from 'dva/router';
 import dynamic from 'dva/dynamic';
 
-
+import Menu from '../components/Menu/Menu';
 const { Header, Footer, Sider, Content } = Layout;
 
-const MenuItem = Menu.Item;
-const SubMenu = Menu.SubMenu;
+// const MenuItem = Menu.Item;
+// const SubMenu = Menu.SubMenu;
+// const ItemGroup = Menu.ItemGroup;
 
 
 function IndexPage({ dispatch, index, app }) {
@@ -20,9 +21,14 @@ function IndexPage({ dispatch, index, app }) {
   return (
     <div>
       <Layout>
-        <Header style={{ background: "#FFFFFF" }}>
+        <Header style={{ background: "#FFFFFF" ,height:600}}>
+          <Menu />
+
         </Header>
         <Content>
+          <Breadcrumb>
+            <Breadcrumb.Item></Breadcrumb.Item>
+          </Breadcrumb>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/list" exact component={List} />

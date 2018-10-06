@@ -1,14 +1,10 @@
 import React from 'react';
 import style from './menu.less';
-function Menu({ menus, onMouseEnter, onMouseLeave }) {
+function Menu({ menus, onMouseEnter,onMouseLeave }) {
 
   let liRefs = [];
   const getMenuCenterX = (index) => {
     return liRefs[index].offsetLeft + liRefs[index].offsetWidth / 2;
-  }
-
-  const mouseEnter = ()=>{
-
   }
 
   return (
@@ -23,7 +19,7 @@ function Menu({ menus, onMouseEnter, onMouseLeave }) {
               onMouseEnter(items,menuCenterX);
 
             }}
-            onMouseLeave={() => onMouseLeave()}
+            onMouseLeave={onMouseLeave}
           >
             <a >{items.value}</a>
           </li>

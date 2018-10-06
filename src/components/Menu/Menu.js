@@ -228,42 +228,46 @@ class Menu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: null,
+      selectItems: null,
+      menuCenterX: 0,
+      subMenuWidth: 0,
+      subMenusWidth: 0,
+      subMenusX: 0
     }
   }
 
-  onMouseEnter = (items, menuCenterX) => {
-    if (items.items) {
+  onMouseEnter = (selectItems, menuCenterX) => {
+    if (selectItems.items) {
       let webWidth = document.body.clientWidth;
       let subMenuWidth = 300;
-      let subMenusWidth = items.items.length * subMenuWidth + 12;
+      let subMenusWidth = selectItems.items.length * subMenuWidth + 12;
       let pageMargin = 50;
       let subMenusX = menuCenterX - subMenusWidth / 2;
       let subMenusRightX = subMenusX + subMenusWidth;
       if (subMenusX < pageMargin) {
         subMenusX = pageMargin;
-      }else if(subMenusRightX > webWidth - pageMargin){
+      } else if (subMenusRightX > webWidth - pageMargin) {
         subMenusX = webWidth - pageMargin - subMenusWidth;
       }
 
       this.setState({
-        items: {
-          menuItems: items.items,
-          subMenuWidth,
-          subMenusWidth,
-          subMenusX,
-        }
+        selectItems,
+        menuCenterX,
+        subMenuWidth,
+        subMenusWidth,
+        subMenusX,
       })
     }
   }
 
   onMouseLeave = () => {
     this.setState({
-      items: null
+      selectItems: null
     })
   }
 
   render() {
+    const { selectItems, subMenuWidth, subMenusWidth, subMenusX } = this.state;
     return (
       <div>
         <div><MenuBar
@@ -271,7 +275,16 @@ class Menu extends React.Component {
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
         /></div>
-        <div><MenuItem items={this.state.items} /></div>
+        <div>
+          <MenuItem
+            selectItems={selectItems}
+            subMenuWidth={subMenuWidth}
+            subMenusWidth={subMenusWidth}
+            subMenusX={subMenusX}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          />
+        </div>
       </div>
     )
   }

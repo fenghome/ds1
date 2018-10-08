@@ -152,7 +152,7 @@ const menus = [
 ];
 
 
-class Menu extends React.Component {
+class MenuCom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -218,4 +218,4 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+export default MenuCom;

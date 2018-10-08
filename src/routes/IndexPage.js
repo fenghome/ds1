@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { Router, Route, Switch } from 'dva/router';
 import dynamic from 'dva/dynamic';
 
-import Menu from '../components/Menu/Menu';
+import MenuCom from '../components/Menu/MenuCom';
 const { Header, Footer, Sider, Content } = Layout;
 
 // const MenuItem = Menu.Item;
@@ -22,7 +22,7 @@ function IndexPage({ dispatch, index, app }) {
     <div style={{ margin: "0 auto", width: 1090 }}>
       <Layout>
         <Header style={{ background: "#FFFFFF" }}>
-          <Menu />
+          <MenuCom />
 
         </Header>
         <Content>

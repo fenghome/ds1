@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './menu.less';
-function Menu({ menus, onMouseEnter,onMouseLeave }) {
+function MenuBar({ menus, onMouseEnter,onMouseLeave }) {
 
   let liRefs = [];
   const getMenuCenterX = (index) => {
@@ -12,6 +12,7 @@ function Menu({ menus, onMouseEnter,onMouseLeave }) {
       {
         menus.map((items, index) => (
           <li
+            key={items.key}
             ref={(li) => { liRefs.push(li) }}
             className={style.barItem}
             onMouseEnter={(e) => {
@@ -21,7 +22,7 @@ function Menu({ menus, onMouseEnter,onMouseLeave }) {
             }}
             onMouseLeave={onMouseLeave}
           >
-            <a >{items.value}</a>
+            <a>{items.value}</a>
           </li>
         ))
       }
@@ -29,4 +30,4 @@ function Menu({ menus, onMouseEnter,onMouseLeave }) {
   )
 }
 
-export default Menu;
+export default MenuBar;

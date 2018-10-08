@@ -25,6 +25,11 @@ const cates = [
   { key: 'dengju', value: '灯具' }
 ]
 
+const paixu = [
+  {key:'jiage',value:'价格',icon:'/38.png'},
+  {key:'shangjiashijian',value:'上架时间',icon:'/38.png'}
+]
+
 
 class List extends React.Component {
 
@@ -44,6 +49,8 @@ class List extends React.Component {
         <div><img src="/banner2.jpg" /></div>
       </Carousel>
       <TagSelect cates={cates} title="分类" />
+      <TagSelect cates={cates} title="配送地区" />
+      <TagSelect cates={paixu} title="排序" />
       </div>
     )
   }

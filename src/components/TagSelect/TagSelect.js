@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Divider } from 'antd';
+import { Menu, Divider, Icon } from 'antd';
 import style from './TagSelect.less';
 const MenuItem = Menu.Item;
 
@@ -26,12 +26,15 @@ class TagSelect extends React.Component {
           <ul>
             {
               cates && cates.map((cate, index) => (
-                <li className={index == this.state.selectIndex && style.selected}><a onClick={() => this.selectItem(index)}>{cate.value}</a></li>
+                <li className={index == this.state.selectIndex ? style.selected : undefined}>
+                  <a onClick={() => this.selectItem(index)}>{cate.value}{cate.icon && <img src={cate.icon} className={style.icon} />}</a>
+
+                </li>
               ))
             }
           </ul>
         </div>
-        <Divider dashed style={{margin:"0 0"}}/>
+        <Divider dashed style={{ margin: "0 0" }} />
       </div>
 
     )

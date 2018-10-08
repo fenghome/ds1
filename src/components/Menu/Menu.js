@@ -3,7 +3,7 @@ import MenuBar from './MenuBar';
 import MenuItem from './MenuItem';
 
 const menus = [
-  { key: 'shouye', value: '首页首页' },
+  { key: 'shouye', value: '首页' },
   {
     key: 'jujia', value: '居家',
     items: [
@@ -17,78 +17,6 @@ const menus = [
         title: '家具家装', subItem: [
           { key: 'jiaju', value: '家具' },
           { key: 'dengju', value: '灯具' }
-        ]
-      }
-
-    ]
-  },
-  {
-    key: 'xiebaopeishi', value: '鞋包配饰',
-    items: [
-      {
-        title: '箱包', subItem: [
-          { key: 'xinglixiang', value: '行李箱' },
-          { key: 'nvshibaodai', value: '女士包袋 ' }
-        ],
-      },
-      {
-        title: '鞋靴', subItem: [
-          { key: 'nvxie', value: '女鞋' },
-          { key: 'nanxie', value: '男鞋' }
-        ]
-      }
-
-    ]
-  },
-  {
-    key: 'xiebaopeishi', value: '鞋包配饰',
-    items: [
-      {
-        title: '箱包', subItem: [
-          { key: 'xinglixiang', value: '行李箱' },
-          { key: 'nvshibaodai', value: '女士包袋 ' }
-        ],
-      },
-      {
-        title: '鞋靴', subItem: [
-          { key: 'nvxie', value: '女鞋' },
-          { key: 'nanxie', value: '男鞋' }
-        ]
-      }
-
-    ]
-  },
-  {
-    key: 'xiebaopeishi', value: '鞋包配饰',
-    items: [
-      {
-        title: '箱包', subItem: [
-          { key: 'xinglixiang', value: '行李箱' },
-          { key: 'nvshibaodai', value: '女士包袋 ' }
-        ],
-      },
-      {
-        title: '鞋靴', subItem: [
-          { key: 'nvxie', value: '女鞋' },
-          { key: 'nanxie', value: '男鞋' }
-        ]
-      }
-
-    ]
-  },
-  {
-    key: 'xiebaopeishi', value: '鞋包配饰',
-    items: [
-      {
-        title: '箱包', subItem: [
-          { key: 'xinglixiang', value: '行李箱' },
-          { key: 'nvshibaodai', value: '女士包袋 ' }
-        ],
-      },
-      {
-        title: '鞋靴', subItem: [
-          { key: 'nvxie', value: '女鞋' },
-          { key: 'nanxie', value: '男鞋' }
         ]
       }
 

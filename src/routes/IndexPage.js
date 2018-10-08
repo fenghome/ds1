@@ -19,19 +19,17 @@ function IndexPage({ dispatch, index, app }) {
   const Product = getComponent(app, import('../models/product'), import('./Product'));
 
   return (
-    <div>
+    <div style={{ margin: "0 auto", width: 1090 }}>
       <Layout>
-        <Header style={{ background: "#FFFFFF" ,height:600}}>
+        <Header style={{ background: "#FFFFFF" }}>
           <Menu />
 
         </Header>
         <Content>
-          <Breadcrumb>
-            <Breadcrumb.Item></Breadcrumb.Item>
-          </Breadcrumb>
+
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/list" exact component={List} />
+            <Route path="/list" component={List} />
             <Route path="/product" exact component={Product} />
           </Switch>
         </Content>

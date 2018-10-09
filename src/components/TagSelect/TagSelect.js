@@ -28,8 +28,7 @@ class TagSelect extends React.Component {
               cates && cates.map((cate, index) => (
                 <li className={index == this.state.selectIndex ? style.selected : undefined}>
                   <a onClick={() => this.selectItem(index)}>{cate.value}{cate.icon && <img src={cate.icon} className={style.icon} />}</a>
-
-                </li>
+                </li> 
               ))
             }
           </ul>

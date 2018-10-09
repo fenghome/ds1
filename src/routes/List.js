@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb,Icon,Carousel } from 'antd';
 import TagSelect from '../components/TagSelect/TagSelect';
-
+import ListCateRow from '../components/ListCateRow/ListCateRow';
 const cates = [
   { key: 'chuangpintaojian', value: '床品套件' },
   { key: 'beizhen', value: '被枕 ' },
@@ -30,6 +30,46 @@ const paixu = [
   {key:'shangjiashijian',value:'上架时间',icon:'/38.png'}
 ]
 
+const listCateData = 
+  {
+    title:'床品件套',
+    description:'MUJI等品牌制造商出品',
+    items:[
+      {
+        name:'轻奢·蕨之语提花四件套',
+        tag:'新品',
+        tagColor:'#e36844',
+        price:50,
+        desc:'400根如绸臻密，提花精致层次感'
+      },
+      {
+        name:'轻奢·蕨之语提花四件套',
+
+        price:50,
+        desc:'400根如绸臻密，提花精致层次感'
+      },
+      {
+        name:'轻奢·蕨之语提花四件套',
+
+        price:50,
+        desc:'400根如绸臻密，提花精致层次感'
+      },
+      {
+        name:'轻奢·蕨之语提花四件套',
+
+        price:50,
+        desc:'400根如绸臻密，提花精致层次感'
+      },
+      {
+        name:'轻奢·蕨之语提花四件套',
+
+        price:50,
+        desc:'400根如绸臻密，提花精致层次感'
+      }
+    ]
+  }
+
+
 
 class List extends React.Component {
 
@@ -51,6 +91,7 @@ class List extends React.Component {
       <TagSelect cates={cates} title="分类" />
       <TagSelect cates={cates} title="配送地区" />
       <TagSelect cates={paixu} title="排序" />
+      <ListCateRow listItems={listCateData} />
       </div>
     )
   }

@@ -25,7 +25,7 @@ function IndexPage({ dispatch, index, app }) {
           <MenuCom />
 
         </Header>
-        <Content>
+        <Content style={{background:"#fff"}}>
 
           <Switch>
             <Route path="/" exact component={Home} />

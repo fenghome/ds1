@@ -30,7 +30,7 @@ const paixu = [
   {key:'shangjiashijian',value:'上架时间',icon:'/38.png'}
 ]
 
-const listCateData = 
+const listCateData =
   {
     title:'床品件套',
     description:'MUJI等品牌制造商出品',
@@ -44,7 +44,7 @@ const listCateData =
       },
       {
         name:'轻奢·蕨之语提花四件套',
-
+        selectable:"3色可选",
         price:50,
         desc:'400根如绸臻密，提花精致层次感'
       },

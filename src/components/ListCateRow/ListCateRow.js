@@ -33,6 +33,7 @@ class ListCateRow extends React.Component{
                                     <div className={style.itemPrice}>¥{item.price}</div>
                                     <div className={style.divider} />
                                     <div className={style.itemDesc}>{item.desc}</div>
+                                    {item.selectable && <div className={style.moreTag}>{item.selectable}</div>}
                                 </Card>
                             </Col>
                         ))

@@ -1,7 +1,7 @@
 
 export default {
 
-  namespace: 'index',
+  namespace: 'product',
 
   state: {
     product:{}

@@ -30,7 +30,7 @@ function IndexPage({ dispatch, index, app }) {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/list" component={List} />
-            <Route path="/product" exact component={Product} />
+            <Route path="/product" component={Product} />
           </Switch>
         </Content>
         <Footer>Footer</Footer>

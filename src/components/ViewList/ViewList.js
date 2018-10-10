@@ -1,33 +1,40 @@
 import React from 'react';
-import style from './ViewList.less'
+import style from './ViewList.less';
+
 class ViewList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectUrl: props.urls[0]
+    }
+  }
+
+  changeViewUrl = (index) => {
+    this.setState({
+      selectUrl: this.props.urls[index]
+    })
+  }
+
   render() {
+    const { urls } = this.props;
     return (
-      <div className={style.viewList}>
-        <div className={style.view}>
-          <img src="/yay.jpg" />
+      <div>
+        <div className={style.viewList}>
+          <div className={style.view}>
+            <img src={this.state.selectUrl} />
+          </div>
+          <ul className={style.list}>
+            {
+              urls && urls.map((url, index) => (
+                <li>
+                  <a onMouseEnter={() => this.changeViewUrl(index)}><img src={url} /></a>
+                </li>
+              ))
+            }
+          </ul>
         </div>
-
-
-        <ul className={style.list}>
-          <li>
-            <a><img src="/rjd.png" /></a>
-          </li>
-          <li>
-            <a><img src="/rjd.png" /></a>
-          </li>
-          <li>
-            <a><img src="/rjd.png" /></a>
-          </li>
-          <li>
-            <a><img src="/rjd.png" /></a>
-          </li>
-          <li>
-            <a><img src="/rjd.png" /></a>
-          </li>
-        </ul>
-
       </div>
+
 
     )
   }

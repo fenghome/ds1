@@ -12,6 +12,8 @@ const product = {
   tagColor:'#b4a078',
   price:799,
   vipPrice:569,
+  integral:4,
+
 }
 class Product extends React.Component {
   render() {
@@ -24,7 +26,7 @@ class Product extends React.Component {
             <ViewList urls={urls} />
           </div>
           <div style={{ float: "right" }}>
-            <ProductInfo product={product}/>
+            <ProductInfo product={product} />
           </div>
         </div>
 

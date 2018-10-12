@@ -11,12 +11,23 @@ class AddressSelect extends React.Component {
           <Icon type="down" theme="outlined" style={{ marginLeft: 6 }} />
         </div>
         <div className={style.selectBody}>
-          <ul>
-            <li>请选择</li>
-            <li className={style.selectTab}>石家庄</li>
+          <div>
+            <div className={style.selectTab}>请选择</div>
+            <div className={style.tab}>石家庄</div>
             <div className={style.hr} />
-          </ul>
-          <div>cccc</div>
+          </div>
+          <div className={style.addressInfoWrap}>
+            <div className={style.addreddInfoItem}><a href="#">北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+            <div className={style.addreddInfoItem}><a>北京市</a></div>
+
+          </div>
         </div>
       </div>
     )

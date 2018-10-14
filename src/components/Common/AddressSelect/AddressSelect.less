@@ -1,19 +1,39 @@
 .addressLine{
   display: inline-block;
-  padding:1px 8px;
+  position:relative;
+  top:-2px;
+  z-index: 3;
+  padding:2px 16px;
   border:1px solid #ccc;
-  border-bottom:1px solid #fff;
+  // border-bottom:0;
   font-size: 12px;
   color:#666;
   background: #fff;
 }
-
+.addressLineSelect{
+  display: inline-block;
+  position:relative;
+  top:-2px;
+  z-index: 20;
+  padding:2px 16px 4px;
+  border:1px solid #ccc;
+  border-bottom:0;
+  font-size: 12px;
+  color:#666;
+  background: #fff;
+}
+a{
+  color:#666;
+}
+a:hover{
+  color:#666;
+}
 .selectBody{
   position: relative;
-  z-index: -1;
-  top:-1px;
+  z-index: 10;
+  top:-3px;
   width:428px;
-  padding:8px;
+  padding:8px 16px;
   background: #fff;
   border:1px solid #ccc;
   ul{
@@ -35,10 +55,15 @@
     z-index: 99;
     margin-right:8px;
     padding:2px 4px;
-
     border:2px solid #b4a078;
     border-bottom: none;
     background: #fff;
+    a{
+      color:#333;
+    }
+    a:hover{
+      color:#b4a078;
+    }
   }
   .hr{
     position: relative;
@@ -51,15 +76,16 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    // align-items: center;
+    flex-wrap: wrap;
     max-height:206px;
-    overflow: auto;
-    .addreddInfoItem{
-      // float:left;
-      // margin-bottom:8px;
-      // padding-left: 6px;
-      // width:25%;
+    overflow-y: scroll;
+    .addressInfoItem{
+      margin-top:8px;
+      padding-left: 6px;
+      width:25%;
       a{
+        display:inline-block;
+        padding:1px 1px;
         color:#333;
         text-decoration: none;
       }

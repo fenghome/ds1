@@ -4,6 +4,59 @@ import Tag from '../Common/Tag/Tag';
 import Coupon from '../Common/Coupon/Coupon';
 import AddressSelect from '../Common/AddressSelect/AddressSelect';
 
+const citys = [
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+  {key:'beijing',name:'北京'},
+  {key:'tianjin',name:'天津'},
+  {key:'shanghai',name:'上海'},
+  {key:'shijiazhuang',name:'石家庄'},
+  {key:'baoding',name:'保定'},
+]
+
 class ProductInfo extends React.Component {
   render() {
     const { product } = this.props;
@@ -32,7 +85,7 @@ class ProductInfo extends React.Component {
           <div className={style.line}>
             <span className={style.pLabel}>配送</span>
             <span>至</span>
-            <div className={style.address}><AddressSelect /></div>
+            <div className={style.address}><AddressSelect citys={citys}/></div>
           </div>
           <div></div>
         </div>

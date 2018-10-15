@@ -7,7 +7,7 @@ class AddressSelect extends React.Component {
     super(props);
     this.state={
       isSelect:false,
-      address:[]
+      address:['河北省','石家庄市','新华区']
     }
   }
 
@@ -42,8 +42,13 @@ class AddressSelect extends React.Component {
             onMouseLeave={this.mouseLeaveAddress}
           >
             <div>
-              <div className={style.selectTab}><a>请选择</a></div>
-              <div className={style.tab}>石家庄</div>
+              {
+                this.state.address.map(a=>(
+                  <div className={style.tab}>{a}</div>
+                ))
+              }
+              {/* <div className={style.selectTab}><a>请选择</a></div>
+              <div className={style.tab}>石家庄</div> */}
               <div className={style.hr} /> 
             </div>
             <div className={style.addressInfoWrap}>

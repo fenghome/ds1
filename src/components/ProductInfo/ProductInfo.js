@@ -5,56 +5,37 @@ import Coupon from '../Common/Coupon/Coupon';
 import AddressSelect from '../Common/AddressSelect/AddressSelect';
 
 const citys = [
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
-  {key:'beijing',name:'北京'},
-  {key:'tianjin',name:'天津'},
-  {key:'shanghai',name:'上海'},
-  {key:'shijiazhuang',name:'石家庄'},
-  {key:'baoding',name:'保定'},
+  {
+  key:'hebei',
+  name:'河北省',
+  citys:[
+    {
+      key:'shijiazhuang',
+      name:'石家庄',
+      qu:[
+        {
+          key:'xinhua',
+          name:'新华区',
+          jiedao:[
+            {
+              key:'gexin',
+              name:'革新街道',
+            },
+            {
+              key:'beiyuan',
+              name:'北苑街道'
+            },
+            {
+              key:'ningan',
+              name:'宁安街道'
+            }
+          ]
+        },
+      ]
+    }
+  ]
+}
+  
 ]
 
 class ProductInfo extends React.Component {

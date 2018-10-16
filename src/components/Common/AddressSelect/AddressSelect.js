@@ -7,11 +7,11 @@ class AddressSelect extends React.Component {
     super(props);
     this.state = {
       isSelect: false,
-      address: [],
-      tabs:[],
+      address: ['请选择'],
+      tabs: [],
       selectTabIndex: -1,
-      selectAddressTreeIndex:[-1,-1,-1,-1],
-      selectItems: props.addressTree.selectItems,
+      selectAddressTreeIndex: [-1, -1, -1, -1],
+      selectItems: props.addressTree,
     }
   }
 
@@ -27,35 +27,57 @@ class AddressSelect extends React.Component {
     })
   }
 
-  onSelectAddress = (item) => {
-    let { isSelect, address,selectTabIndex , selectItems } = this.state;
-
-    //change selectTabIndex
-    if (item.sub && address[0] != '请选择') {
-      this.setState({
-        selectTabIndex: selectTabIndex + 1
-      })
-    }
-    //change adress
-    if (address[0] == '请选择') {
-      address[0] = item.name;
-    } else{
-      address.push(item.name);
-    }
-
-    console.log(address);
-    //change selectItems,isSelect
-    if (item.sub) {
-      selectItems = item.sub;
-    } else {
-      isSelect = false;
-    }
+  updateSelectItems = () => {
+    const { addressTree } = this.props;
+    let selectItems = addressTree;
+    this.state.selectAddressTreeIndex.forEach(i => {
+      if (i != -1) {
+        selectItems = selectItems.items[i].sub
+      }
+    });
 
     this.setState({
-      isSelect,
-      address,
       selectItems
-    })
+    });
+
+  }
+
+
+
+  onSelectAddress = (item, index) => {
+    //change selectTabIndex
+    let { selectAddressTreeIndex, selectTabIndex } = this.state;
+    if (item.sub) {
+      selectTabIndex = selectTabIndex + 1;
+      this.setState({
+        selectTabIndex
+      })
+    }
+
+    selectAddressTreeIndex[selectTabIndex] = index;
+
+    this.updateSelectItems();
+
+    // //change adress
+    // if (address[0] == '请选择') {
+    //   address[0] = item.name;
+    // } else{
+    //   address.push(item.name);
+    // }
+
+    // console.log(address);
+    // // change selectItems,isSelect
+    // if (item.sub) {
+    //   selectItems = item.selectItem;
+    // } else {
+    //   isSelect = false;
+    // }
+
+    // this.setState({
+    //   isSelect,
+    //   // address,
+    //   selectItems
+    // })
   }
 
   changeSelectTabIndex = (index) => {
@@ -63,7 +85,6 @@ class AddressSelect extends React.Component {
     this.setState({
       selectTabIndex: index
     })
-    console.log(index);
   }
 
   render() {
@@ -76,16 +97,16 @@ class AddressSelect extends React.Component {
           onMouseLeave={this.mouseLeaveAddress}
           className={this.state.isSelect ? style.addressLineSelect : style.addressLine}>
           {
-            this.state.address[0] == '请选择' ?
-              <a>请选择地址<Icon type="down" theme="outlined" style={{ marginLeft: 6 }} /></a>
-              :
-              <a>
-                {
-                  this.state.address.map((item, index) => (
-                    <span key={index}>{item}</span>
-                  ))
-                }
-              </a>
+            // this.state.address[0] == '请选择' ?
+            <a>请选择地址<Icon type="down" theme="outlined" style={{ marginLeft: 6 }} /></a>
+            // :
+            // <a>
+            //   {
+            //     this.state.address.map((item, index) => (
+            //       <span key={index}>{item}</span>
+            //     ))
+            //   }
+            // </a>
           }
         </div>
         {
@@ -112,7 +133,7 @@ class AddressSelect extends React.Component {
               </div>
               <div className={style.addressInfoWrap}>
                 {
-                  this.state.selectItems.map((item, index) => (
+                  this.state.selectItems.items.map((item, index) => (
                     <div className={style.addressInfoItem} key={item.key}>
                       <a onClick={() => this.onSelectAddress(item, index)}>{item.name}</a>
                     </div>

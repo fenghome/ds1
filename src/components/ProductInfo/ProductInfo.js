@@ -5,18 +5,18 @@ import Coupon from '../Common/Coupon/Coupon';
 import AddressSelect from '../Common/AddressSelect/AddressSelect';
 
 const addressTree = {
-  tabName: '请选择', selectItems: [
+  tabName: '请选择', items: [
     {
       key: 'hebei',
       name: '河北省',
       sub: {
-        tabName: '城市', selectItems: [
+        tabName: '城市', items: [
           {
             key: 'sjz', name: '石家庄', sub: {
-              tabName: '区县', selectItems: [
+              tabName: '区县', items: [
                 {
                   key: 'xh', name: '新华区', sub: {
-                    tabName: '街道', selectItems: [
+                    tabName: '街道', items: [
                       { key: 'xhl', name: '新华路街道' },
                       { key: 'gx', name: '革新街道' }
                     ]
@@ -24,7 +24,7 @@ const addressTree = {
                 },
                 {
                   key: 'qd', name: '桥东区', sub: {
-                    tabName: '街道', selectItems: [
+                    tabName: '街道', items: [
                       { key: 'wmj', name: '维明街道' },
                       { key: 'yy', name: '友谊街道' }
                     ]
@@ -35,10 +35,10 @@ const addressTree = {
           },
           {
             key: 'bd', name: '保定', sub: {
-              tabName: '区县', selectItems: [
+              tabName: '区县', items: [
                 {
                   key: 'ax', name: '安新县', sub: {
-                    tabName: '村庄', selectItems: [
+                    tabName: '村庄', items: [
                       { key: 'wjz', name: '王家寨' },
                       { key: 'pc', name: '彭村' }
                     ]
@@ -46,7 +46,7 @@ const addressTree = {
                 },
                 {
                   key: 'xiongxian', name: '雄县', sub: {
-                    tabName: '村庄', selectItems: [
+                    tabName: '村庄', items: [
                       { key: 'ljz', name: '李家寨' }
                     ]
                   }

@@ -56,6 +56,9 @@ class AddressSelect extends React.Component {
         selectItems = selectItems.items[selectTree[i]].sub;
       }
     }
+    this.setState({
+      tabs
+    })
   }
 
 
@@ -63,7 +66,7 @@ class AddressSelect extends React.Component {
   onSelectAddress = (item, index) => {
     //change selectTabIndex
     let { selectTree, selectTabIndex } = this.state;
-    if (item.sub) {
+    if (index < selectTree.length) {
       selectTabIndex = selectTabIndex + 1;
       this.setState({
         selectTabIndex
@@ -73,7 +76,9 @@ class AddressSelect extends React.Component {
     selectTree[selectTabIndex] = index;
 
     this.updateSelectItems();
+    this.updateTabs();
 
+    console.log(selectTree);
     // //change adress
     // if (address[0] == '请选择') {
     //   address[0] = item.name;
@@ -135,7 +140,7 @@ class AddressSelect extends React.Component {
               <div>
                 {
                   this.state.tabs.map((a, index) => {
-                    let styleObj = this.state.selectTabIndex == index ? style.selectTab : style.tab;
+                    let styleObj = this.state.selectTabIndex+1 == index ? style.selectTab : style.tab;
                     return (
                       <div className={styleObj} key={index} onClick={() => this.changeSelectTabIndex(index)}>
                         <a>{a}</a>

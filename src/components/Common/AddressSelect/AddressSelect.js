@@ -10,7 +10,7 @@ class AddressSelect extends React.Component {
       address: ['请选择'],
       tabs: [],
       selectTabIndex: -1,
-      selectAddressTreeIndex: [-1, -1, -1, -1],
+      selectTree: [-1, -1, -1, -1],
       selectItems: props.addressTree,
     }
   }
@@ -30,7 +30,7 @@ class AddressSelect extends React.Component {
   updateSelectItems = () => {
     const { addressTree } = this.props;
     let selectItems = addressTree;
-    this.state.selectAddressTreeIndex.forEach(i => {
+    this.state.selectTree.forEach(i => {
       if (i != -1) {
         selectItems = selectItems.items[i].sub
       }
@@ -42,11 +42,27 @@ class AddressSelect extends React.Component {
 
   }
 
+  updateTabs = ()=>{
+    const { addressTree } = this.props;
+    const { tabs,selectTree } = this.state;
+    let selectItems = addressTree;
+    for(let i=0;i<selectTree.length;i++){
+      if(selectTree[i] == -1){
+        tabs[i] = selectItems.tabName;
+        break;
+      }
+      tabs[i] = selectItems.items[selectTree[i]].name;
+      if(selectItems.items[selectTree[i]].sub){
+        selectItems = selectItems.items[selectTree[i]].sub;
+      }
+    }
+  }
+
 
 
   onSelectAddress = (item, index) => {
     //change selectTabIndex
-    let { selectAddressTreeIndex, selectTabIndex } = this.state;
+    let { selectTree, selectTabIndex } = this.state;
     if (item.sub) {
       selectTabIndex = selectTabIndex + 1;
       this.setState({
@@ -54,7 +70,7 @@ class AddressSelect extends React.Component {
       })
     }
 
-    selectAddressTreeIndex[selectTabIndex] = index;
+    selectTree[selectTabIndex] = index;
 
     this.updateSelectItems();
 
@@ -118,7 +134,7 @@ class AddressSelect extends React.Component {
             >
               <div>
                 {
-                  this.state.address.map((a, index) => {
+                  this.state.tabs.map((a, index) => {
                     let styleObj = this.state.selectTabIndex == index ? style.selectTab : style.tab;
                     return (
                       <div className={styleObj} key={index} onClick={() => this.changeSelectTabIndex(index)}>

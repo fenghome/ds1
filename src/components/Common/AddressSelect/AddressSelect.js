@@ -29,12 +29,19 @@ class AddressSelect extends React.Component {
 
   updateSelectItems = () => {
     const { addressTree } = this.props;
+    const { selectTree } = this.state;
     let selectItems = addressTree;
-    this.state.selectTree.forEach(i => {
-      if (i != -1) {
-        selectItems = selectItems.items[i].sub
+    for(let i = 0;i<selectTree.length;i++){
+      if(selectTree[i] == -1){
+        break;
       }
-    });
+      if(i != selectTree.length-1){
+        selectItems = selectItems.items[selectTree[i]].sub
+      }else{
+        selectItems = selectItems.items[selectTree[i]]
+      }
+    }
+
 
     this.setState({
       selectItems
@@ -45,16 +52,14 @@ class AddressSelect extends React.Component {
   updateTabs = ()=>{
     const { addressTree } = this.props;
     const { tabs,selectTree } = this.state;
-    let selectItems = addressTree;
+    let tempItems = addressTree;
     for(let i=0;i<selectTree.length;i++){
       if(selectTree[i] == -1){
-        tabs[i] = selectItems.tabName;
+        tabs[i] = tempItems.tabName;
         break;
       }
-      tabs[i] = selectItems.items[selectTree[i]].name;
-      if(selectItems.items[selectTree[i]].sub){
-        selectItems = selectItems.items[selectTree[i]].sub;
-      }
+      tabs[i] = tempItems.items[selectTree[i]].name; 
+      selectItems = tempItems.items[selectTree[i]].sub;
     }
     this.setState({
       tabs

@@ -8,10 +8,10 @@ class AddressSelect extends React.Component {
     this.state = {
       isSelect: false,
       address: ['请选择'],
-      tabs: [],
+      tabs: ['请选择'],
       selectTabIndex: -1,
       selectTree: [-1, -1, -1, -1],
-      selectItems: props.addressTree,
+      selectItems: props.addressStore[0].items,
     }
   }
 
@@ -27,39 +27,36 @@ class AddressSelect extends React.Component {
     })
   }
 
-  updateSelectItems = () => {
+  updateSelectItems = (selectTree, selectTabIndex) => {
     const { addressTree } = this.props;
-    const { selectTree } = this.state;
     let selectItems = addressTree;
-    for(let i = 0;i<selectTree.length;i++){
-      if(selectTree[i] == -1){
-        break;
-      }
-      if(i != selectTree.length-1){
+    for (let i = 0; i <= selectTabIndex; i++) {
+      if (i < selectTree.length - 1) {
         selectItems = selectItems.items[selectTree[i]].sub
-      }else{
-        selectItems = selectItems.items[selectTree[i]]
       }
     }
-
 
     this.setState({
       selectItems
     });
 
+
   }
 
-  updateTabs = ()=>{
+  updateTabs = () => {
     const { addressTree } = this.props;
-    const { tabs,selectTree } = this.state;
+    const { tabs, selectTree } = this.state;
     let tempItems = addressTree;
-    for(let i=0;i<selectTree.length;i++){
-      if(selectTree[i] == -1){
+    for (let i = 0; i < selectTree.length; i++) {
+      if (selectTree[i] == -1) {
         tabs[i] = tempItems.tabName;
         break;
       }
-      tabs[i] = tempItems.items[selectTree[i]].name; 
-      selectItems = tempItems.items[selectTree[i]].sub;
+      tabs[i] = tempItems.items[selectTree[i]].name;
+      if (i < selectTree.length - 1) {
+        tempItems = tempItems.items[selectTree[i]].sub;
+      }
+
     }
     this.setState({
       tabs
@@ -71,7 +68,7 @@ class AddressSelect extends React.Component {
   onSelectAddress = (item, index) => {
     //change selectTabIndex
     let { selectTree, selectTabIndex } = this.state;
-    if (index < selectTree.length) {
+    if (selectTabIndex < selectTree.length-1 ) {
       selectTabIndex = selectTabIndex + 1;
       this.setState({
         selectTabIndex
@@ -79,31 +76,13 @@ class AddressSelect extends React.Component {
     }
 
     selectTree[selectTabIndex] = index;
-
-    this.updateSelectItems();
-    this.updateTabs();
-
+    this.setState({
+      selectTree
+    })
+    console.log(selectTabIndex);
     console.log(selectTree);
-    // //change adress
-    // if (address[0] == '请选择') {
-    //   address[0] = item.name;
-    // } else{
-    //   address.push(item.name);
-    // }
-
-    // console.log(address);
-    // // change selectItems,isSelect
-    // if (item.sub) {
-    //   selectItems = item.selectItem;
-    // } else {
-    //   isSelect = false;
-    // }
-
-    // this.setState({
-    //   isSelect,
-    //   // address,
-    //   selectItems
-    // })
+    this.updateTabs();
+    this.updateSelectItems(selectTree, selectTabIndex);
   }
 
   changeSelectTabIndex = (index) => {
@@ -111,11 +90,11 @@ class AddressSelect extends React.Component {
     this.setState({
       selectTabIndex: index
     })
+    this.updateTabs();
+    this.updateSelectItems(this.state.selectTree, index-1);
   }
 
   render() {
-    const { citys } = this.props;
-
     return (
       <div>
         <div
@@ -145,7 +124,7 @@ class AddressSelect extends React.Component {
               <div>
                 {
                   this.state.tabs.map((a, index) => {
-                    let styleObj = this.state.selectTabIndex+1 == index ? style.selectTab : style.tab;
+                    let styleObj = this.state.selectTabIndex  == index ? style.selectTab : style.tab;
                     return (
                       <div className={styleObj} key={index} onClick={() => this.changeSelectTabIndex(index)}>
                         <a>{a}</a>
@@ -153,15 +132,13 @@ class AddressSelect extends React.Component {
                     )
                   })
                 }
-                {/* <div className={style.selectTab}><a>请选择</a></div>
-              <div className={style.tab}>石家庄</div> */}
                 <div className={style.hr} />
               </div>
               <div className={style.addressInfoWrap}>
                 {
-                  this.state.selectItems.items.map((item, index) => (
+                  this.state.selectItems.map((item, index) => (
                     <div className={style.addressInfoItem} key={item.key}>
-                      <a onClick={() => this.onSelectAddress(item, index)}>{item.name}</a>
+                      <a onClick={() => this.onSelectAddress(item, index)}>{item}</a>
                     </div>
                   ))
                 }

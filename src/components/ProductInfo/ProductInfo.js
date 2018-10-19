@@ -4,62 +4,12 @@ import Tag from '../Common/Tag/Tag';
 import Coupon from '../Common/Coupon/Coupon';
 import AddressSelect from '../Common/AddressSelect/AddressSelect';
 
-const addressTree = {
-  tabName: '请选择', items: [
-    {
-      key: 'hebei',
-      name: '河北省',
-      sub: {
-        tabName: '城市', items: [
-          {
-            key: 'sjz', name: '石家庄', sub: {
-              tabName: '区县', items: [
-                {
-                  key: 'xh', name: '新华区', sub: {
-                    tabName: '街道', items: [
-                      { key: 'xhl', name: '新华路街道' },
-                      { key: 'gx', name: '革新街道' }
-                    ]
-                  }
-                },
-                {
-                  key: 'qd', name: '桥东区', sub: {
-                    tabName: '街道', items: [
-                      { key: 'wmj', name: '维明街道' },
-                      { key: 'yy', name: '友谊街道' }
-                    ]
-                  }
-                }
-              ]
-            }
-          },
-          {
-            key: 'bd', name: '保定', sub: {
-              tabName: '区县', items: [
-                {
-                  key: 'ax', name: '安新县', sub: {
-                    tabName: '村庄', items: [
-                      { key: 'wjz', name: '王家寨' },
-                      { key: 'pc', name: '彭村' }
-                    ]
-                  }
-                },
-                {
-                  key: 'xiongxian', name: '雄县', sub: {
-                    tabName: '村庄', items: [
-                      { key: 'ljz', name: '李家寨' }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
-
+const addrssStore = [
+  {key:'qxz',tabName:'省',items:['北京','天津','河北','山东','山西','广州','台湾']},
+  {key:'hb',tabName:'市',items:['石家庄','保定','唐山','邯郸','秦皇岛']},
+  {key:'sjz',tabName:'区',items:['新华','长安','桥东','桥西']},
+  {key:'sd',tabName:'市',items:['青岛','崂山']},
+]
 
 
 class ProductInfo extends React.Component {
@@ -90,7 +40,7 @@ class ProductInfo extends React.Component {
           <div className={style.line}>
             <span className={style.pLabel}>配送</span>
             <span>至</span>
-            <div className={style.address}><AddressSelect addressTree={addressTree} /></div>
+            <div className={style.address}><AddressSelect addrssStore={addrssStore} /></div>
           </div>
           <div></div>
         </div>

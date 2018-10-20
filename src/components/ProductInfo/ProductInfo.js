@@ -4,8 +4,8 @@ import Tag from '../Common/Tag/Tag';
 import Coupon from '../Common/Coupon/Coupon';
 import AddressSelect from '../Common/AddressSelect/AddressSelect';
 
-const addrssStore = [
-  {key:'qxz',tabName:'省',items:['北京','天津','河北','山东','山西','广州','台湾']},
+const addressStore = [
+  {key:'qxz',tabName:'省',items:[{key:'bj',name:'北京'},{key:'tj',name:'天津'},{key:'hb',name:'河北'},{key:'sd',name:'山东'},'山西','广州','台湾']},
   {key:'hb',tabName:'市',items:['石家庄','保定','唐山','邯郸','秦皇岛']},
   {key:'sjz',tabName:'区',items:['新华','长安','桥东','桥西']},
   {key:'sd',tabName:'市',items:['青岛','崂山']},
@@ -40,7 +40,7 @@ class ProductInfo extends React.Component {
           <div className={style.line}>
             <span className={style.pLabel}>配送</span>
             <span>至</span>
-            <div className={style.address}><AddressSelect addrssStore={addrssStore} /></div>
+            <div className={style.address}><AddressSelect addressStore={addressStore} /></div>
           </div>
           <div></div>
         </div>

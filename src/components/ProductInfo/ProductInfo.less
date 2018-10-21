@@ -25,6 +25,7 @@
     }
     .pLabel{
       padding-right:24px;
+      flex:none;
     }
     .pIcon{
       padding-right: 2px;
@@ -67,7 +68,138 @@
       padding-left:4px;
       z-index: 999;
     }
+    .serviceLine{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    .service{
+      a:hover{
+        text-decoration: underline
+      }
+    }
 
   }
+  .hr{
+      margin:16px 0;
+      border:none;
+      border-bottom:1px dashed #d2d2dd;
+  }
+  .line1{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding:20px 8px 0px 8px;
+    .label{
+      padding-right: 24px;
+    }
+    .selectBox{
+      margin-right: 24px;
+      padding:6px 16px;
+      border:1px solid #ddd;
+    }
+    .isSelect{
+      position: relative;
+      margin-right: 24px;
+      padding:5px 16px;
+      border:2px solid #b4a078;
+      img{
+        position: absolute;
+        bottom:0px;
+        right:0px;
+        width:12px;
+        height:12px;
+      }
+    }
+    .numberBox{
+      display: flex;
+      flex-direction: row;
+      .btn{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width:40px;
+        height:32px;
+        border:1px solid #ddd;
+      }
+      .num{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width:56px;
+        height:32px;
+        border:none;
+        border-top:1px solid #ddd;
+        border-bottom:1px solid #ddd;
+        font-weight: 700;
+      }
+    }
+  }
+  .line2{
+    display: flex;
+    flex-direction: row;
+    margin-top:40px;
+    margin-left:8px;
+    .buy{
+      margin-right: 10px;
+      a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:168px;
+        height:50px;
+        border:1px solid #b4a078;
+        border-radius: 2px;
+        font-size: 18px;
+        color:#b4a078;
+        background:#f5f3ef;
+      }
+      a:hover{
+        background:#fff;
+      }
+    }
+    .addCar{
+      margin-right:10px;
+      a{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width:168px;
+        height:50px;
+        border:1px solid #b4a078;
+        border-radius: 2px;
+        font-size: 18px;
+        color:#fff;
+        background:#b4a078;
+      }
+      a:hover{
+        background: #c0ae8a;
+      }
+      .icon{
+        padding-right: 4px;
+        font-size: 24px;
+      }
+    }
+    .collection{
+      a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:50px;
+        height:50px;
+        border:1px solid #CCC;
+        .icon{
+          font-size:16px;
+        }
+      }
+    }
+  }
+
 
 }

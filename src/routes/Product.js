@@ -4,6 +4,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import ViewList from '../components/ViewList/ViewList';
 // import style from './Product.less';
 import ProductInfo from '../components/ProductInfo/ProductInfo';
+import AllLook from '../components/AllLook/AllLook';
 const urls = ['p1.jpg', 'p2.jpg', 'p3.jpg', 'p4.jpg', 'p5.jpg'];
 const product = {
   name:'轻奢·蕨之语提花四件套',
@@ -21,15 +22,16 @@ class Product extends React.Component {
     return (
       <div>
         <Breadcrumb items={breadcrumbs} />
-        <div>
+        <div style={{marginBottom:32}}>
           <div style={{ float: "left" }}>
             <ViewList urls={urls} />
           </div>
           <div style={{ float: "right" }}>
             <ProductInfo product={product} />
           </div>
+          <div style={{clear:"both"}} />
         </div>
-
+        <AllLook />
       </div>
     )
   }

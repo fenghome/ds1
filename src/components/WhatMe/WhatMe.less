@@ -1,0 +1,66 @@
+.whatMe{
+  padding:0 16px;
+  width:364px;
+  height:164px;
+  border-left:1px solid #e8e8e8;
+  border-right: 1px solid #e8e8ee;
+  .title{
+    margin-bottom:28px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color:#333;
+  }
+  .contnet{
+    margin-bottom: 22px;
+    text-align: left;
+    line-height: 23px;
+    font-size: 13px;
+  }
+  .fllowMe{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    span{
+      margin-right: 15px;
+      font-size: 14px;
+    }
+  }
+  .QRcode{
+    position: relative;
+    padding-top:12px;
+    z-index: 10;
+    .code1{
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left:38px;
+      width:103px;
+      height:103px;
+    }
+    .code2{
+      display: flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left:86px;
+      width:103px;
+      height:103px;
+    }
+    .upIco{
+      width:12px;
+      height:12px;
+    }
+    .codeImg{
+      position: relative;
+      top:-4px;
+      z-index: 9;
+      box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+    }
+
+  }
+}

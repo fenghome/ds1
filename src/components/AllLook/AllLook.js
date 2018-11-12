@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Card, Row, Col } from 'antd';
 import style from './AllLook.less';
 import Tag from '../Common/Tag/Tag';
+import ProductItem from '../Common/PorductItem/ProductItem';
 
 class AllLook extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class AllLook extends React.Component {
   }
 
   render() {
+    const { products } = this.props;
     return (
       <div className={style.allLook}>
         <div className={style.title}>大家都在看</div>
@@ -18,70 +20,13 @@ class AllLook extends React.Component {
           </div>
           <div className={style.listItems}>
             <Row gutter={16}>
-              <Col span={6}>
-                <div className={style.product}>
-                  <img className={style.cover} src="pp1.png" />
-                  <div className={style.tag}>
-                    <Tag text="今日特价" bColor="#e36844" />
-                  </div>
-                  <a>平板喷水拖把</a>
-                  <div className={style.priceInf}>
-                    <span className={style.pri}>¥88</span>
-                    <span className={style.oPri}>¥188</span>
-                    <span className={style.icon}>
-                      <Icon type="shopping-cart" theme="outlined" />
-                    </span>
-                  </div>
-                </div>
-              </Col>
-              <Col span={6}v>
-                <div className={style.product}>
-                  <img className={style.cover} src="pp2.png" />
-                  <div className={style.tag}>
-                    <Tag text="今日特价" bColor="#e36844" />
-                  </div>
-                  <a>平板喷水拖把</a>
-                  <div className={style.priceInf}>
-                    <span className={style.pri}>¥88</span>
-                    <span className={style.oPri}>¥188</span>
-                    <span className={style.icon}>
-                      <Icon type="shopping-cart" theme="outlined" />
-                    </span>
-                  </div>
-                </div>
-              </Col>
-              <Col span={6}>
-                <div className={style.product}>
-                  <img className={style.cover} src="pp3.png" />
-                  <div className={style.tag}>
-                    <Tag text="今日特价" bColor="#e36844" />
-                  </div>
-                  <a>平板喷水拖把</a>
-                  <div className={style.priceInf}>
-                    <span className={style.pri}>¥88</span>
-                    <span className={style.oPri}>¥188</span>
-                    <span className={style.icon}>
-                      <Icon type="shopping-cart" theme="outlined" />
-                    </span>
-                  </div>
-                </div>
-              </Col>
-              <Col span={6}>
-                <div className={style.product}>
-                  <img className={style.cover} src="pp4.png" />
-                  <div className={style.tag}>
-                    <Tag text="今日特价" bColor="#e36844" />
-                  </div>
-                  <a>平板喷水拖把</a>
-                  <div className={style.priceInf}>
-                    <span className={style.pri}>¥88</span>
-                    <span className={style.oPri}>¥188</span>
-                    <span className={style.icon}>
-                      <Icon type="shopping-cart" theme="outlined" />
-                    </span>
-                  </div>
-                </div>
-              </Col>
+              {
+                products && products.map(product => (
+                  <Col span={6} >
+                    <ProductItem {...product} coverW="210px" coverH="210px"/>
+                  </Col>
+                ))
+              }
             </Row>
           </div>
           <div className={style.btn}>

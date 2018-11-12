@@ -1,0 +1,34 @@
+.info{
+  width:750px;
+  .infoLine{
+    display: flex;
+    flex-direction: row;
+    width:750px;
+    height:40px;
+    border-top: 1px dashed #e8e8e8;
+    .lineItem{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width:50%;
+      height:100%;
+      .itemLabel{
+        padding-left:24px;
+        width:40%;
+        font-size: 14px;
+        color:#333;
+      }
+      .itemContent{
+        width:60%;
+        font-size:14px;
+        color:#999;
+      }
+    }
+  }
+  .infoLine:first-child{
+    border-top:none;
+  }
+}
+.show{
+  width:750px;
+}

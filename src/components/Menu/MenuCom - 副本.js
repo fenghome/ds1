@@ -1,7 +1,6 @@
 import React from 'react';
 import MenuBar from './MenuBar';
 import MenuItem from './MenuItem';
-import style from './menu.less';
 
 const menus = [
   { key: 'shouye', value: '首页' },
@@ -110,6 +109,7 @@ const menus = [
           { key: 'nanxie', value: '男鞋' }
         ]
       }
+
     ]
   },
   {
@@ -164,67 +164,55 @@ class MenuCom extends React.Component {
     }
   }
 
-  // onMouseEnter = (selectItems, menuCenterX) => {
-  //   if (selectItems.items) {
-  //     let webWidth = document.body.clientWidth;
-  //     let subMenuWidth = 300;
-  //     let subMenusWidth = selectItems.items.length * subMenuWidth + 12;
-  //     let pageMargin = 50;
-  //     let subMenusX = menuCenterX - subMenusWidth / 2;
-  //     let subMenusRightX = subMenusX + subMenusWidth;
-  //     if (subMenusX < pageMargin) {
-  //       subMenusX = pageMargin;
-  //     } else if (subMenusRightX > webWidth - pageMargin) {
-  //       subMenusX = webWidth - pageMargin - subMenusWidth;
-  //     }
+  onMouseEnter = (selectItems, menuCenterX) => {
+    if (selectItems.items) {
+      let webWidth = document.body.clientWidth;
+      let subMenuWidth = 300;
+      let subMenusWidth = selectItems.items.length * subMenuWidth + 12;
+      let pageMargin = 50;
+      let subMenusX = menuCenterX - subMenusWidth / 2;
+      let subMenusRightX = subMenusX + subMenusWidth;
+      if (subMenusX < pageMargin) {
+        subMenusX = pageMargin;
+      } else if (subMenusRightX > webWidth - pageMargin) {
+        subMenusX = webWidth - pageMargin - subMenusWidth;
+      }
 
-  //     this.setState({
-  //       selectItems,
-  //       menuCenterX,
-  //       subMenuWidth,
-  //       subMenusWidth,
-  //       subMenusX,
-  //     })
-  //   }
-  // }
+      this.setState({
+        selectItems,
+        menuCenterX,
+        subMenuWidth,
+        subMenusWidth,
+        subMenusX,
+      })
+    }
+  }
 
-  // onMouseLeave = () => {
-  //   this.setState({
-  //     selectItems: null
-  //   })
-  // }
+  onMouseLeave = () => {
+    this.setState({
+      selectItems: null
+    })
+  }
 
   render() {
     const { selectItems, subMenuWidth, subMenusWidth, subMenusX } = this.state;
     return (
-      <div className={style.menu}>
-        {
-          menus.map(menu => (
-            <div className={style.menuBarAndItem}>
-              <div className={style.menuBarItem} key={menu.key}>
-                {menu.value}
-              </div>
-              <div className={style.menuItems}>
-                {
-                menu.items && menu.items.map(item=>(
-                    <div className={style.menuItem} key={item.key}>
-                      <div className={style.menuItemTitle}>{menu.title}</div>
-                      {
-                        menu.subItem && menu.subItem.map(subMenu=>(
-                          <div className={style.subMenu} key={subMenu.key}>
-                            <div className={style.subMenuIco}>{}</div>
-                            <div className={style.subMenuValue}>{subMenu.value}</div>
-                          </div>
-                        ))
-                      }
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          ))
-        }
-
+      <div>
+        <div><MenuBar
+          menus={menus}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+        /></div>
+        <div>
+          <MenuItem
+            selectItems={selectItems}
+            subMenuWidth={subMenuWidth}
+            subMenusWidth={subMenusWidth}
+            subMenusX={subMenusX}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          />
+        </div>
       </div>
     )
   }

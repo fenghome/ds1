@@ -22,7 +22,7 @@ function MenuBar({ menus, onMouseEnter,onMouseLeave }) {
             }}
             onMouseLeave={onMouseLeave}
           >
-            <a>{items.value}</a>
+            {items.value}
           </li>
         ))
       }

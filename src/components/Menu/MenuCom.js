@@ -20,7 +20,6 @@ const menus = [
           { key: 'dengju', value: '灯具' }
         ]
       }
-
     ]
   },
   {
@@ -156,12 +155,24 @@ class MenuCom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectItems: null,
+      selectId: null,
       menuCenterX: 0,
       subMenuWidth: 0,
       subMenusWidth: 0,
       subMenusX: 0
     }
+  }
+
+  onMouseEnter = (id) => {
+    this.setState({
+      selectId: id
+    })
+  }
+
+  onMouseLeave = () => {
+    this.setState({
+      selectId: null
+    })
   }
 
   // onMouseEnter = (selectItems, menuCenterX) => {
@@ -195,32 +206,50 @@ class MenuCom extends React.Component {
   // }
 
   render() {
-    const { selectItems, subMenuWidth, subMenusWidth, subMenusX } = this.state;
+    const { selectId, subMenuWidth, subMenusWidth, subMenusX } = this.state;
     return (
       <div className={style.menu}>
         {
-          menus.map(menu => (
+          menus.map((menu, id) => (
             <div className={style.menuBarAndItem}>
-              <div className={style.menuBarItem} key={menu.key}>
+              <div
+                className={style.menuBarItem}
+                key={menu.key}
+                onMouseEnter={() => this.onMouseEnter(id)}
+                onMouseLeave={() => this.onMouseLeave()}
+              >
                 {menu.value}
               </div>
-              <div className={style.menuItems}>
-                {
-                menu.items && menu.items.map(item=>(
-                    <div className={style.menuItem} key={item.key}>
-                      <div className={style.menuItemTitle}>{menu.title}</div>
+              {
+                selectId == id && (
+                  <div
+                    className={style.menuItemContent}
+                    onMouseEnter={() => this.onMouseEnter(id)}
+                    onMouseLeave={() => this.onMouseLeave()}
+                  >
+                    <img className={style.menuItemsIcon} src="/up1.png" />
+                    <div
+                      className={style.menuItems}
+                    >
                       {
-                        menu.subItem && menu.subItem.map(subMenu=>(
-                          <div className={style.subMenu} key={subMenu.key}>
-                            <div className={style.subMenuIco}>{}</div>
-                            <div className={style.subMenuValue}>{subMenu.value}</div>
+                        menu.items && menu.items.map(item => (
+                          <div className={style.menuItem} key={item.key}>
+                            <div className={style.menuItemTitle}>{item.title}</div>
+                            {
+                              item.subItem && item.subItem.map(subMenu => (
+                                <a className={style.subMenu} key={subMenu.key}>
+                                  <img className={style.subMenuIco} src="/mIco1.png" />
+                                  <div className={style.subMenuValue}>{subMenu.value}</div>
+                                </a>
+                              ))
+                            }
                           </div>
                         ))
                       }
                     </div>
-                  ))
-                }
-              </div>
+                  </div>
+                )
+              }
             </div>
           ))
         }

@@ -9,29 +9,61 @@
   color:#333;
   .menuBarAndItem{
     position: relative;
-  }
-  .menuBarItem{
     margin-right:48px;
   }
-  .menuItems{
+  .menuItemContent{
     display: flex;
-    flex-direction: row;
-    position:absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top:20px;
+    left:50%;
+    transform: translateX(-50%);
     z-index: 10;
-    .menuItem{
-      .menuItemTitle{
-
-      }
-      .subMenu{
-
-      }
-      .subMenuIco{
-
-      }
-      .subMenuValue{
-
+    padding:16px;
+    .menuItemsIcon{
+      position: relative;
+      top:20px;
+      left:50%;
+      transform: translateX(-50%);
+      padding:0;
+      width:32px;
+      height:16px;
+    }
+    .menuItems{
+      display: flex;
+      flex-direction: row;
+      margin-top:-5px;
+      padding:16px;
+      background: #fff;
+      border:1px solid #ddd;
+      .menuItem{
+        margin-left:16px;
+        .menuItemTitle{
+          padding-bottom:8px;
+          width:140px;
+          border-bottom:1px solid #ddd;
+        }
+        .subMenu{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .subMenuIco{
+            width:50px;
+            height:50px;
+          }
+          .subMenuValue{
+            font-size: 14px;
+            font-weight: 100;
+            color:#333;
+          }
+          .subMenuValue:hover{
+            color:#b4a078;
+          }
+        }
       }
     }
+
   }
 
 

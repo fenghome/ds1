@@ -154,6 +154,7 @@ const menus = [
 class MenuCom extends React.Component {
   constructor(props) {
     super(props);
+    this.menuBarRefs = [];
     this.state = {
       selectId: null,
       menuCenterX: 0,
@@ -164,9 +165,11 @@ class MenuCom extends React.Component {
   }
 
   onMouseEnter = (id) => {
+
     this.setState({
       selectId: id
     })
+    console.log(this.menuBarRefs[id].getBoundingClientRect());
   }
 
   onMouseLeave = () => {
@@ -217,6 +220,7 @@ class MenuCom extends React.Component {
                 key={menu.key}
                 onMouseEnter={() => this.onMouseEnter(id)}
                 onMouseLeave={() => this.onMouseLeave()}
+                ref={(menubar)=>this.menuBarRefs.push(menubar)}
               >
                 {menu.value}
               </div>
@@ -226,6 +230,7 @@ class MenuCom extends React.Component {
                     className={style.menuItemContent}
                     onMouseEnter={() => this.onMouseEnter(id)}
                     onMouseLeave={() => this.onMouseLeave()}
+
                   >
                     <img className={style.menuItemsIcon} src="/up1.png" />
                     <div

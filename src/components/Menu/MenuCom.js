@@ -165,11 +165,23 @@ class MenuCom extends React.Component {
   }
 
   onMouseEnter = (id) => {
+    //获得中西点x
+    let centerX = document.body.clientWidth/2;
+    let leftX = centerX - 570;
+    let rightX = centerX + 570;
+    const menuW = 173;
+    let menusW = menus[id].items.length * menuW;
+    let menuBarRec = this.menuBarRefs[id].getBoundingClientRect();
+    let menuLeftX = menuBarRec.x + menuBarRec.width/2 - menusW/2;
+    let menuRightX = menuBarRec.x + menuBarRec.width/2 + menusW/2;
+    console.log(leftX);
+    console.log(menuLeftX);
 
+    console.log(rightX);
+    console.log(menuRightX);
     this.setState({
       selectId: id
     })
-    console.log(this.menuBarRefs[id].getBoundingClientRect());
   }
 
   onMouseLeave = () => {

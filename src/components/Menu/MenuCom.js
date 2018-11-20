@@ -19,12 +19,36 @@ const menus = [
           { key: 'jiaju', value: '家具' },
           { key: 'dengju', value: '灯具' }
         ]
+      },
+      {
+        title: '箱包', subItem: [
+          { key: 'xinglixiang', value: '行李箱' },
+          { key: 'nvshibaodai', value: '女士包袋 ' }
+        ],
+      },
+      {
+        title: '鞋靴', subItem: [
+          { key: 'nvxie', value: '女鞋' },
+          { key: 'nanxie', value: '男鞋' }
+        ]
       }
     ]
   },
   {
     key: 'xiebaopeishi', value: '鞋包配饰',
     items: [
+      {
+        title: '箱包', subItem: [
+          { key: 'xinglixiang', value: '行李箱' },
+          { key: 'nvshibaodai', value: '女士包袋 ' }
+        ],
+      },
+      {
+        title: '鞋靴', subItem: [
+          { key: 'nvxie', value: '女鞋' },
+          { key: 'nanxie', value: '男鞋' }
+        ]
+      },
       {
         title: '箱包', subItem: [
           { key: 'xinglixiang', value: '行李箱' },
@@ -143,7 +167,19 @@ const menus = [
           { key: 'nvxie', value: '女鞋' },
           { key: 'nanxie', value: '男鞋' }
         ]
-      }
+      },
+      {
+        title: '箱包', subItem: [
+          { key: 'xinglixiang', value: '行李箱' },
+          { key: 'nvshibaodai', value: '女士包袋 ' }
+        ],
+      },
+      {
+        title: '鞋靴', subItem: [
+          { key: 'nvxie', value: '女鞋' },
+          { key: 'nanxie', value: '男鞋' }
+        ]
+      },
 
     ]
   },
@@ -157,29 +193,48 @@ class MenuCom extends React.Component {
     this.menuBarRefs = [];
     this.state = {
       selectId: null,
-      menuCenterX: 0,
-      subMenuWidth: 0,
-      subMenusWidth: 0,
-      subMenusX: 0
+      move: 0,
+
     }
   }
 
   onMouseEnter = (id) => {
+    if (!menus[id].items) {
+      return;
+    }
     //获得中西点x
-    let centerX = document.body.clientWidth/2;
-    let leftX = centerX - 570;
-    let rightX = centerX + 570;
-    const menuW = 173;
-    let menusW = menus[id].items.length * menuW;
+    let centerX = document.body.clientWidth / 2;
+    let maxWidth = 1140;
+    let leftX = centerX - maxWidth / 2;
+    let rightX = centerX + maxWidth / 2;
+    const itemWidth = 140;
+    let menuItemsW = menus[id].items.length * (itemWidth + 16) + 16 * 2 + 16 * 2 + 2;
     let menuBarRec = this.menuBarRefs[id].getBoundingClientRect();
-    let menuLeftX = menuBarRec.x + menuBarRec.width/2 - menusW/2;
-    let menuRightX = menuBarRec.x + menuBarRec.width/2 + menusW/2;
-    console.log(leftX);
-    console.log(menuLeftX);
-
-    console.log(rightX);
-    console.log(menuRightX);
+    let menuBarCenterX = menuBarRec.x + menuBarRec.width / 2;
+    let menuItemsCenterX = menuBarRec.x + menuItemsW / 2;
+    let move = menuBarCenterX - menuItemsCenterX
     this.setState({
+      move: move
+    })
+    if (menuItemsW > maxWidth) {
+      this.setState({
+        move: centerX - (menuBarRec.x + menuItemsW / 2)
+      })
+    } else if (menuBarRec.x - (menuItemsCenterX - menuBarCenterX) < leftX) {
+      this.setState({
+        move: leftX - menuBarRec.x
+      })
+    } else if (menuBarRec.x + menuItemsW - (menuItemsCenterX - menuBarCenterX) > rightX) {
+      this.setState({
+        move: rightX - (menuBarRec.x + menuItemsW)
+      })
+    }
+    // console.log(menuBarCenterX);
+    console.log(this.state.move);
+    // console.log(menuBarRec.width / 2);
+    // console.log(menuItemsW / 2);
+    this.setState({
+
       selectId: id
     })
   }
@@ -232,17 +287,18 @@ class MenuCom extends React.Component {
                 key={menu.key}
                 onMouseEnter={() => this.onMouseEnter(id)}
                 onMouseLeave={() => this.onMouseLeave()}
-                ref={(menubar)=>this.menuBarRefs.push(menubar)}
+                ref={(menubar) => this.menuBarRefs.push(menubar)}
               >
                 {menu.value}
               </div>
               {
-                selectId == id && (
+                menu.items && selectId == id && (
+
                   <div
                     className={style.menuItemContent}
                     onMouseEnter={() => this.onMouseEnter(id)}
                     onMouseLeave={() => this.onMouseLeave()}
-
+                    style={{ left: this.state.move }}
                   >
                     <img className={style.menuItemsIcon} src="/up1.png" />
                     <div
